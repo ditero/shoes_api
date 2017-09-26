@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shoe Catalogue, API Development">
+  <meta name="author" content="Anele Sigenu"> ``
+  <title>Shoes api</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+              </button>
+        <a class="navbar-brand page-scroll" href="#page-top">Shoe Catalogue API</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#addStock">Add Stock</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#updateStock">Update Stock</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+  <!-- {{data}} -->
+  <br>
+  <br>
+  <br>
+
+<!-- Filter Shoes by Brand or Size -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="form col-md-4">
+        <select class="form-control form-control-lg">
+          <option>Brand</option>
+        </select>
+      </div>
+
+      <div class="form col-md-4">
+        <select class="form-control form-control-lg">
+          <option>Size</option>
+        </select>
+      </div>
+    </div>
+    <br>
+</div>
+
+    <!-- Display All Shoes -->
+    <div class="container-fluid">
+      <div class="">
+        <div id="myShoes">
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <script id="myTemplate" type="text/x-handlebars-some-template">
+      {{#if shoes}} {{#each shoes}}
+      <div class="card mb-4" id="shoe_card">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="card-title text-center">{{brand}}</h4>
+          </div>
+          <div class="panel-body">
+            <img class="card-img-top img-center" src="{{image}}" width="160px" height="170px" alt="image">
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button>
+          </div>
+        </div>
+        <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
+        <div class="card-body">
+          <div class="portfolio-caption">
+            <span class=" btn btn-block btn-sm badge badge-secondary badge-lg">CODE: {{id}}</span>
+            <p class="list-group-item">Color: {{color}}</p>
+            <p class="list-group-item">Size: {{size}}</p>
+            <p class="list-group-item">Price: {{price}} <span></span></p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      <!-- {{else}}{{/if}} -->
+      <br>
+    </script>
+    <!-- JQUERY JavaScript -->
+    <script src="./vendor/jquery/jquery.min.js"></script>
+
+    <!-- Handlebars -->
+    <script src="./vendor/handlebars/handlebars-v4.0.5.js" charset="utf-8"></script>
+
+    <!-- Functions JavaScript -->
+    <script src="./js/mainscript.js" charset="utf-8"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+
+
+.card {
+  padding: 0;
+  margin-left: 80px;
+  width: 22rem;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+/*img{
+  width: 80px;
+  height: 200px
+}*/
