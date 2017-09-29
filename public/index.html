@@ -52,75 +52,90 @@
   <br>
   <br>
 
-<!-- Filter Shoes by Brand or Size -->
+  <!-- Filter Shoes by Brand or Size -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2"></div>
       <div class="form col-md-4">
-        <select class="form-control form-control-lg">
-          <option>Brand</option>
+        <select class="form-control form-control-lg selectBrand">
+           <script  type="text/x-handlebars-some-template" id="brandTemplate">
+             <option value=''>Brand</option>
+             {{#each brands}}
+               <option name="color">{{this}}</option>
+            {{/each}}
+            <option value='All'>Show All</option>
+           </script>
         </select>
       </div>
 
       <div class="form col-md-4">
-        <select class="form-control form-control-lg">
-          <option>Size</option>
+        <select class="form-control form-control-lg selectSize">
+           <script  type="text/x-handlebars-some-template" id="colorTemplate">
+             <option value=''>Size</option>
+             {{#each sizes}}
+               <option name="color">{{this}}</option>
+            {{/each}}
+            <option value='All'>Show All</option>
+           </script>
         </select>
       </div>
     </div>
     <br>
-</div>
+  </div>
 
-    <!-- Display All Shoes -->
-    <div class="container-fluid">
-      <div class="">
-        <div id="myShoes">
-        </div>
+  <!-- Display All Shoes -->
+  <div class="container-fluid">
+    <div class="">
+      <div id="myShoes">
       </div>
-
     </div>
 
+  </div>
 
 
-    <script id="myTemplate" type="text/x-handlebars-some-template">
-      {{#if shoes}} {{#each shoes}}
-      <div class="card mb-4" id="shoe_card">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="card-title text-center">{{brand}}</h4>
-          </div>
-          <div class="panel-body">
-            <img class="card-img-top img-center" src="{{image}}" width="160px" height="170px" alt="image">
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button>
-          </div>
+
+  <script id="myTemplate" type="text/x-handlebars-some-template">
+  {{#if shoes}}
+  {{#each shoes}}
+    <div class="card mb-4" id="shoe_card">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="card-title text-center">{{brand}}</h4>
         </div>
-        <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
-        <div class="card-body">
-          <div class="portfolio-caption">
-            <span class=" btn btn-block btn-sm badge badge-secondary badge-lg">CODE: {{id}}</span>
-            <p class="list-group-item">Color: {{color}}</p>
-            <p class="list-group-item">Size: {{size}}</p>
-            <p class="list-group-item">Price: {{price}} <span></span></p>
-          </div>
+        <div class="panel-body">
+          <img class="card-img-top img-center" src="{{image}}" width="160px" height="170px" alt="image">
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button>
         </div>
       </div>
-      {{/each}}
-      <!-- {{else}}{{/if}} -->
-      <br>
-    </script>
-    <!-- JQUERY JavaScript -->
-    <script src="./vendor/jquery/jquery.min.js"></script>
+      <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
+      <div class="card-body">
+        <div class="portfolio-caption">
+          <span class=" btn btn-block btn-sm badge badge-secondary badge-lg">CODE: {{id}}</span>
+          <p class="list-group-item">Color: {{color}}</p>
+          <p class="list-group-item">Size: {{size}}</p>
+          <p class="list-group-item priceTag">Price: {{price}} <span></span></p>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    {{/if}}
+    <br>
+  </script>
+  <!-- JQUERY JavaScript -->
+  <script src="./vendor/jquery/jquery.min.js"></script>
 
-    <!-- Handlebars -->
-    <script src="./vendor/handlebars/handlebars-v4.0.5.js" charset="utf-8"></script>
+  <!-- Handlebars -->
+  <script src="./vendor/handlebars/handlebars-v4.0.5.js" charset="utf-8"></script>
 
-    <!-- Functions JavaScript -->
-    <script src="./js/mainscript.js" charset="utf-8"></script>
+  <!-- JavaScript Functions-->
+  <script src="./js/mainscript.js" charset="utf-8"></script>
+  <script src="./js/uniquebrands.js" charset="utf-8"></script>
+  <script src="./js/uniquesizes.js" charset="utf-8"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,13 @@
   overflow: hidden;
 }
 
+.priceTag{
+  position: relative;
+    font-family: "VAGRoundedStd-Bold", Arial;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+}
 /*img{
   width: 80px;
   height: 200px
