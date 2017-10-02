@@ -11,15 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "ajax-request": "^1.2.3",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.3",
+    "express-session": "^1.15.6",
     "express3-handlebars": "^0.5.2",
-    "mocha": "^3.4.2",
+    "mocha": "^3.5.3",
     "mongodb": "^2.2.30",
-    "mongoose": "^4.11.11",
-    "request": "^2.81.0"
+    "mongoose": "^4.11.14",
+    "request": "^2.83.0"
   }
 }
