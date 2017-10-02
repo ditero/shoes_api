@@ -69,7 +69,9 @@ module.exports = function(models) {
   const listGivenBrand = async(req, res) => {
     let brand = req.params.brandname
     let reqBrand = await getiGivenBrand(brand)
-    res.json(reqBrand)
+    res.json({
+      data: reqBrand
+    })
   }
 
   //Pass JSON Data of shoes matching the given size and brand
@@ -77,7 +79,9 @@ module.exports = function(models) {
     let givenBrand = req.params.brandname
     let givenSize = req.params.size
     let sizeAndBrand = await getGivenSizeAndBrand(givenBrand, givenSize)
-    res.json(sizeAndBrand)
+    res.json({
+      data: sizeAndBrand
+    })
   }
 
   const updateOnPurchase = function(req, res) {

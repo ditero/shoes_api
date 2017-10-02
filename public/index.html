@@ -56,28 +56,28 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2"></div>
-      <div class="form col-md-4">
-        <select class="form-control form-control-lg selectBrand">
-           <script  type="text/x-handlebars-some-template" id="brandTemplate">
-             <option value=''>Brand</option>
-             {{#each brands}}
-               <option name="color">{{this}}</option>
-            {{/each}}
-            <option value='All'>Show All</option>
-           </script>
-        </select>
-      </div>
+      <div class="parentOption">
+        <div class="form col-md-4 selectBrand">
+          <script  type="text/x-handlebars-some-template" id="brandTemplate">
+          <select class="form-control form-control-lg" id="brands" name="brand">
+              <option >Brands</option>
+              {{#each brands}}
+              <option >{{this}}</option>
+              {{/each}}
+          </select>
+        </script>
+        </div>
 
-      <div class="form col-md-4">
-        <select class="form-control form-control-lg selectSize">
-           <script  type="text/x-handlebars-some-template" id="colorTemplate">
-             <option value=''>Size</option>
-             {{#each sizes}}
-               <option name="color">{{this}}</option>
-            {{/each}}
-            <option value='All'>Show All</option>
-           </script>
-        </select>
+        <div class="form col-md-4 selectSize">
+          <script type="text/x-handlebars-some-template" id="sizeTemplate">
+          <select class="form-control form-control-lg " name="size">
+              <option >Sizes</option>
+              {{#each sizes}}
+              <option >{{this}}</option>
+              {{/each}}
+          </select>
+        </script>
+        </div>
       </div>
     </div>
     <br>
@@ -120,6 +120,8 @@
       </div>
     </div>
     {{/each}}
+    {{else}}
+    <p>"Not Found"</p>
     {{/if}}
     <br>
   </script>
@@ -133,6 +135,12 @@
   <script src="./js/mainscript.js" charset="utf-8"></script>
   <script src="./js/uniquebrands.js" charset="utf-8"></script>
   <script src="./js/uniquesizes.js" charset="utf-8"></script>
+  <script src="./js/querySize.js" charset="utf-8"></script>
+  <script src="./js/queryBrand.js" charset="utf-8"></script>
+  <script src="./js/queryBrandAndSize.js" charset="utf-8"></script>
+
+  <script src="./js/search.js" charset="utf-8"></script>
+
 
   <!-- Bootstrap Core JavaScript -->
   <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
