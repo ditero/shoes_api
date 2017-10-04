@@ -22,7 +22,7 @@
   <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
+      <div class="navbar-header navbar-right page-scroll">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
               </button>
@@ -31,18 +31,22 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="hidden">
-            <a href="#page-top"></a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#addStock">Add Stock</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#updateStock">Update Stock</a>
-          </li>
-        </ul>
-      </div>
+            <ul class="nav navbar-nav navbar-left">
+              <li class="hidden">
+                <a href="#page-top"></a>
+              </li>
+              <li>
+                <br>
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addStockModal">Add new Stock</button>
+              </li>
+              <li>
+                <br>
+                <!-- <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#updateModal">Update Stock</button> -->
+                <!-- <a class="page-scroll" href="#updateStock">Update Stock</a> -->
+              </li>
+            </ul>
+          </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -103,28 +107,104 @@
           <h4 class="card-title text-center">{{brand}}</h4>
         </div>
         <div class="panel-body">
-          <img class="card-img-top img-center" src="{{image}}" width="160px" height="170px" alt="image">
+          <img class="card-img-top img-center" src="{{image}}" width="200px" height="180px" alt="image">
         </div>
         <div class="panel-footer">
-          <button type="button" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button>
+          <!-- <button type="button" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button> -->
+          <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
         </div>
       </div>
-      <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
       <div class="card-body">
         <div class="portfolio-caption">
           <span class=" btn btn-block btn-sm badge badge-secondary badge-lg">CODE: {{id}}</span>
           <p class="list-group-item">Color: {{color}}</p>
           <p class="list-group-item">Size: {{size}}</p>
-          <p class="list-group-item priceTag">Price: {{price}} <span></span></p>
+          <p class="list-group-item priceTag" step="0.01" min="0.99" max="9999999999.99">Price: {{price}} <span></span></p>
         </div>
       </div>
     </div>
     {{/each}}
     {{else}}
-    <p>"Not Found"</p>
+    <h5 class="text-center"> Sorry, We do not have this shoe.</h5>
     {{/if}}
     <br>
   </script>
+
+  <!-- Add Modal -->
+     <div class="modal fade" id="addStockModal" role="dialog">
+       <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">Add New Stock</h4>
+           </div>
+           <div class="modal-body">
+             <div class="form-group">
+               <input type="textl" class="form form-control" placeholder="Item ID" name="id" value="">
+               <br>
+               <input type="text" class="form form-control" placeholder="Shoe Brand" name="brand" value="">
+               <br>
+               <input type="text" class="form-control" placeholder="Enter Image URL" name="" value="">
+               <br>
+               <div class="row">
+                 <div class="">
+                   <div class="col-md-4">
+                     <input type="number" class="form-control" min="0.00" placeholder="Shoe Price" name="" value="">
+                   </div>
+                   <div class="col-md-4">
+                     <input type="number" class="form-control" placeholder="Quantity" name="" value="">
+                   </div>
+                   <div class="col-md-4">
+                     <select class="select form-control" name="size">
+                       <option value="">Select Size</option>
+                       <option value="">1</option>
+                       <option value="">2</option>
+                       <option value="">3</option>
+                       <option value="">4</option>
+                       <option value="">5</option>
+                       <option value="">6</option>
+                       <option value="">7</option>
+                       <option value="">8</option>
+                       <option value="">9</option>
+                       <option value="">10</option>
+                       <option value="">11</option>
+                       <option value="">12</option>
+                     </select>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default">Submit</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           </div>
+         </div>
+
+       </div>
+     </div>
+     <!-- update Modal -->
+        <div class="modal fade" id="updateModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+              </div>
+              <div class="modal-body">
+                <p>Some text in the modal.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
   <!-- JQUERY JavaScript -->
   <script src="./vendor/jquery/jquery.min.js"></script>
 

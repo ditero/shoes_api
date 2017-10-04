@@ -16,10 +16,11 @@ $(".selectSize").on('change', function(e){
  thisSize = this.children.size.value
 
 //Conditional statement to check which drop option has been selected
-if (thisSize  && thisBrand === undefined) {
+if (thisSize !== "Sizes"  && (thisBrand === undefined || thisBrand === "Brands")) {
     searchSize(myShoes, thisSize, shoesTemplate)
-  }else if (thisBrand !== undefined && thisSize !== undefined) {
+  }else if (thisBrand !== "Brands" && thisSize !== "Sizes") {
     searchBrandAndSize(myShoes, thisBrand, thisSize, shoesTemplate)
-
+  }else{
+    renderAll(allShoes)
   }
 })

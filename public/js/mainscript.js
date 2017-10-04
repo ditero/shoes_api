@@ -8,14 +8,12 @@ var renderColTemplate = Handlebars.compile(sizeTemp.innerHTML);
 var renderBrand =  document.querySelector(".selectBrand");
 var brandTemp = document.getElementById('brandTemplate');
 var renderBrandTemplate = Handlebars.compile(brandTemp.innerHTML);
-
+var allShoes
 var url = "http://localhost:8000/api/shoes"
 $.get(url).then(function(data) {
-  let allShoes = data.data
+  allShoes = data.data
 
-  myShoes.innerHTML = shoesTemplate({
-    shoes: allShoes //JSON.stringify(data.data)
-  })
+  renderAll(allShoes)
   renderSize.innerHTML = renderColTemplate({
     sizes: uniqueSizes(allShoes)
   })
@@ -25,3 +23,8 @@ $.get(url).then(function(data) {
 
   console.log(uniqueBrands(allShoes));
 })
+ function renderAll(shoes) {
+   myShoes.innerHTML = shoesTemplate({
+     shoes: allShoes //JSON.stringify(data.data)
+   })
+ }
