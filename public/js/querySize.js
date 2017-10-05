@@ -1,7 +1,7 @@
 // Search the given size using AJAX Call
 function searchSize(myshoes, size, shoesTemplate){
   $.ajax({
-    url: "http://localhost:8000/api/shoes/size/"+size,
+    url: "http://localhost:8000/api/shoes/size/"+size || "http://shoe-cart-api.herokuapp.com/api/shoes/size/"+size,
     type: "GET"
   }).done(function(shoesData){
     myShoes.innerHTML = shoesTemplate({
