@@ -9,7 +9,7 @@ var renderBrand =  document.querySelector(".selectBrand");
 var brandTemp = document.getElementById('brandTemplate');
 var renderBrandTemplate = Handlebars.compile(brandTemp.innerHTML);
 var allShoes
-var url = "http://localhost:8000/api/shoes" || "https://shoe-cart-api.herokuapp.com/api/shoes"
+var url = "https://shoe-cart-api.herokuapp.com/api/shoes" //"http://localhost:8000/api/shoes"
 $.get(url).then(function(data) {
   allShoes = data.data
 
