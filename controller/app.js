@@ -44,7 +44,8 @@ module.exports = function(models) {
       color: item.color,
       size: item.size,
       price: item.price,
-      in_stock: item.in_stock
+      in_stock: item.in_stock,
+      image: item.image
     })
 
   }
@@ -105,11 +106,17 @@ module.exports = function(models) {
   }
 
   //Add stock to the DB
-  const addNewStock = async(req, res) => {
+  const addNewStock = async(req, res, next) => {
     let stock = req.body
     let addedItem = await addNewItem(stock)
     console.log(addedItem);
-    res.json(addedItem)
+    try {
+      res.json({
+        data: addedItem
+      })
+    } catch (e) {
+      return next(e)
+    }
   }
 
   return {

@@ -11,17 +11,15 @@ module.exports = function(mongoURL) {
     color: String,
     price: Number,
     in_stock: Number,
-    image: {
-      type: String,
-      default:'/images/tusoni.jpg'
-    }
+    image: String
+
   })
 
   shoeSchema.index({
     id: 1
   }, {
     unique: true
-  })
+  });
   const Catalogue = mongoose.model('Catalogue', shoeSchema)
   return {
     Catalogue
