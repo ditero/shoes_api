@@ -8,10 +8,10 @@ var renderColTemplate = Handlebars.compile(sizeTemp.innerHTML);
 var renderBrand =  document.querySelector(".selectBrand");
 var brandTemp = document.getElementById('brandTemplate');
 var renderBrandTemplate = Handlebars.compile(brandTemp.innerHTML);
-var allShoes
-var url = "https://shoe-cart-api.herokuapp.com/api/shoes" //"http://localhost:8000/api/shoes"
-$.get(url).then(function(data) {
-  allShoes = data.data
+// var allShoes
+var url =  "http://localhost:8000/api/shoes" //"https://shoe-cart-api.herokuapp.com/api/shoes"
+$.get(url).done(function(data) {
+  var allShoes = data.data
 
   renderAll(allShoes)
   renderSize.innerHTML = renderColTemplate({
@@ -25,6 +25,6 @@ $.get(url).then(function(data) {
 })
  function renderAll(shoes) {
    myShoes.innerHTML = shoesTemplate({
-     shoes: allShoes //JSON.stringify(data.data)
+     shoes: shoes //JSON.stringify(data.data)
    })
  }

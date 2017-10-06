@@ -43,7 +43,7 @@ app.get('/api/shoes', shoesRoutes.shoesInStock)
 app.get('/api/shoes/brand/:brandname', shoesRoutes.listGivenBrand)
 app.get('/api/shoes/size/:size', shoesRoutes.listGivenSize)
 app.get('/api/shoes/brand/:brandname/size/:size', shoesRoutes.listGivenSizeAndBrand)
-app.post('/api/shoes/sold/id', shoesRoutes.updateOnPurchase)
+app.post('/api/shoes/sold/:id', shoesRoutes.updateOnPurchase)
 app.post('/api/shoes', shoesRoutes.addNewStock)
 
 // Catch 404 and forward to error handler

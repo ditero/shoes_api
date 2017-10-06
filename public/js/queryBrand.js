@@ -1,7 +1,7 @@
 // Search the given brand using AJAX Call
 function searchBrand(myshoes, brand, shoesTemplate){
   $.ajax({
-    url: "https://shoe-cart-api.herokuapp.com/api/shoes/brand/"+brand, //"http://localhost:8000/api/shoes/brand/"+brand ||
+    url: "https://shoe-cart-api.herokuapp.com/api/shoes/brand/"+brand, //"http://localhost:8000/api/shoes/brand/"+brand, 
     type: "GET"
   }).done(function(shoesData){
     myShoes.innerHTML = shoesTemplate({

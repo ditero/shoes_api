@@ -47,8 +47,26 @@ module.exports = function(models) {
       in_stock: item.in_stock,
       image: item.image
     })
-
   }
+
+  //Update shoes on purchase
+  const buyShoes = async(id) => {
+    return models.Catalogue.findOne({id: id}, function(err, results) {
+      if (results.in_stock > 0 ) {
+        results.in_stock = results.in_stock - 1;
+        results.save();
+      }
+
+    })
+    // return models.Catalogue.findOneAndUpdate({
+    //   id: id
+    // }, {
+    //   $inc: {
+    //     "in_stock": -1
+    //   }
+    // })
+  }
+
   //Pass JSON Data of all Shoes in stock
   const shoesInStock = async(req, res, next) => {
     let shoes = await getShoes()
@@ -100,9 +118,15 @@ module.exports = function(models) {
       return next(e)
     }
   }
+  //Pass JSON Data of the updated shoes
+  const updateOnPurchase = async(req, res) => {
+    var shoeID = req.params.id
+    let stockAvail = await buyShoes(shoeID)
+    try {
+      res.redirect("/")
+    } catch (e) {
 
-  const updateOnPurchase = function(req, res) {
-
+    }
   }
 
   //Add stock to the DB
@@ -112,6 +136,7 @@ module.exports = function(models) {
     console.log(addedItem);
     try {
       res.json({
+        // status: 'success',
         data: addedItem
       })
     } catch (e) {
