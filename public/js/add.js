@@ -1,10 +1,10 @@
 function addNewStock(shoes) {
   $.ajax({
-    url: "http://localhost:8000/api/shoes", //"https://shoe-cart-api.herokuapp.com/api/shoes",
+    url: "https://shoe-cart-api.herokuapp.com/api/shoes", //"https://shoe-cart-api.herokuapp.com/api/shoes",
     type: "POST",
     data: shoes
   }).done(function(results) {
-    // console.log(results);
+    console.log(results);
   })
 
 }
@@ -23,6 +23,8 @@ $(".newStock").on('change', function(t) {
 
 $("#submitStock").on('click', function(){
   addNewStock(newShoes)
+  getAll()
+
   //renderAll(allShoes)
-  console.log(addNewStock(newShoes));
+  // console.log(addNewStock(newShoes));
 })

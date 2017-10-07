@@ -9,8 +9,11 @@ var renderBrand =  document.querySelector(".selectBrand");
 var brandTemp = document.getElementById('brandTemplate');
 var renderBrandTemplate = Handlebars.compile(brandTemp.innerHTML);
 // var allShoes
-var url =  "http://localhost:8000/api/shoes" //"https://shoe-cart-api.herokuapp.com/api/shoes"
-$.get(url).done(function(data) {
+var url =  "https://shoe-cart-api.herokuapp.com/api/shoes" //"https://shoe-cart-api.herokuapp.com/api/shoes"
+function getAll(){  $.ajax({
+    url: url,
+    type: "GET"
+  }).done(function(data) {
   var allShoes = data.data
 
   renderAll(allShoes)
@@ -20,10 +23,12 @@ $.get(url).done(function(data) {
   renderBrand.innerHTML = renderBrandTemplate({
     brands: uniqueBrands(allShoes)
   })
+})}
+getAll()
 
-  console.log(uniqueBrands(allShoes));
-})
+//Update display on page load, when filtering and also buying shoes
  function renderAll(shoes) {
+   console.log(shoes);
    myShoes.innerHTML = shoesTemplate({
      shoes: shoes //JSON.stringify(data.data)
    })

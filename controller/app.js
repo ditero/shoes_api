@@ -123,7 +123,7 @@ module.exports = function(models) {
     var shoeID = req.params.id
     let stockAvail = await buyShoes(shoeID)
     try {
-      res.redirect("/")
+      res.redirect("https://shoe-cart-api.herokuapp.com/api/shoes")
     } catch (e) {
 
     }
@@ -136,7 +136,6 @@ module.exports = function(models) {
     console.log(addedItem);
     try {
       res.json({
-        // status: 'success',
         data: addedItem
       })
     } catch (e) {
