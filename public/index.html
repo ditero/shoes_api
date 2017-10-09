@@ -26,27 +26,27 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
               </button>
-        <a class="navbar-brand page-scroll" href="#page-top">Shoe Catalogue API</a>
+        <a class="navbar-brand page-scroll" href="/">Shoe Catalogue API</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-              <li class="hidden">
-                <a href="#page-top"></a>
-              </li>
-              <li>
-                <br>
-                <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addStockModal">Add new Stock</button>
-              </li>
-              <li>
-                <br>
-                <!-- <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#updateModal">Update Stock</button> -->
-                <!-- <a class="page-scroll" href="#updateStock">Update Stock</a> -->
-              </li>
-            </ul>
-          </div>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li>
+            <br>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addStockModal">Add new Stock</button>
+          </li>
+          <li>
+            <br>
+            <!-- <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#updateModal">Update Stock</button> -->
+            <!-- <a class="page-scroll" href="#updateStock">Update Stock</a> -->
+          </li>
+        </ul>
+      </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
@@ -62,25 +62,25 @@
       <div class="col-md-2"></div>
       <div class="parentOption">
         <div class="form col-md-4 selectBrand">
-          <script  type="text/x-handlebars-some-template" id="brandTemplate">
-          <select class="form-control form-control-lg" id="brands" name="brand">
+          <script type="text/x-handlebars-some-template" id="brandTemplate">
+            <select class="form-control form-control-lg" id="brands" name="brand">
               <option >Brands</option>
               {{#each brands}}
               <option >{{this}}</option>
               {{/each}}
           </select>
-        </script>
+          </script>
         </div>
 
         <div class="form col-md-4 selectSize">
           <script type="text/x-handlebars-some-template" id="sizeTemplate">
-          <select class="form-control form-control-lg " name="size">
+            <select class="form-control form-control-lg " name="size">
               <option >Sizes</option>
               {{#each sizes}}
               <option >{{this}}</option>
               {{/each}}
           </select>
-        </script>
+          </script>
         </div>
       </div>
     </div>
@@ -99,72 +99,75 @@
 
 
   <script id="myTemplate" type="text/x-handlebars-some-template">
-  {{#if shoes}}
-  {{#each shoes}}
+    {{#if shoes}} {{#each shoes}}
     <div class="card mb-4" id="shoe_card">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="card-title text-center">{{brand}}</h4>
-        </div>
+      <div class="panel ">
         <div class="panel-body">
           <img class="card-img-top img-center" src="{{image}}" width="200px" height="180px" alt="image">
         </div>
+        <h4 class="card-title text-center">{{brand}}</h4>
         <div class="panel-footer">
-          <small class="text-center text-muted">{{in_stock}} item(s) in stock.</small>
+          <small class="">Color: {{color}}</small>
         </div>
       </div>
       <div class="card-body">
-        <div id="buyThis" class="portfolio-caption">
-          <span id="shoeID" class="btn-block btn-sm badge badge-secondary badge-lg" name="id" value="{{id}}" >CODE: {{id}}</span>
-          <p class="list-group-item">Color: {{color}}</p>
-          <p class="list-group-item">Size: {{size}}</p>
-          <p class="list-group-item priceTag" step="0.01" min="0.99" max="9999999999.99">Price: {{price}} <span></span></p>
-          <button type="button" value="{{id}}" onclick=buythis({{id}}) id="buyBtn"name="buy" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button>
-        </div>
+        {{#if in_stock}}
+        <span id="shoeID" class="btn-block btn-sm badge badge-secondary badge-lg text-right" name="id" value="{{id}}">
+          CODE: {{id}} |
+          <small class="text-right">{{in_stock}} Available.</small>
+        </span>
+        {{else}}
+        <span id="shoeID" class="btn-block btn-sm badge badge-secondary badge-lg text-right" name="id" value="{{id}}">
+          CODE: {{id}}
+        </span>
+        {{/if}}
+        <p class="list-group-item text-center">Size: {{size}}</p>
+        <p class="list-group-item priceTag" step="any" min="0,99" max="9999999999,99">Price  <span class="pull-right">{{price}}</span></p>
+        {{#if in_stock}}
+        <button type="button" value="{{id}}" onclick=buythis({{id}}) id="buyBtn" name="buy" class="btn btn-default btn-block"> <i class="fa fa-1x fa-shopping-cart"></i> Purchase</button> {{else}}
+        <button type="button" class="btn btn-outline btn-block text-warning" disabled>Out of Stock</button> {{/if}}
       </div>
     </div>
-    {{/each}}
-    {{else}}
-    <h5 class="text-center"> Sorry, We do not have this shoe.</h5>
-    {{/if}}
+    {{/each}} {{else}}
+    <h5 class="text-center"> Sorry, We do not have this shoe.</h5> {{/if}}
     <br>
   </script>
 
   <!-- Add Modal -->
-     <div class="modal fade" id="addStockModal" role="dialog">
-       <div class="modal-dialog">
+  <div class="modal fade" id="addStockModal" role="dialog">
+    <div class="modal-dialog">
 
-         <!-- Modal content-->
-         <div class="newStock modal-content" id="needs-validation" novalidate>
-           <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-             <h4 class="modal-title">Add New Stock</h4>
-           </div>
-           <form>
-             <div class="modal-body">
-               <div class="form-group">
-                 <input type="textl" class="form form-control" placeholder="Item ID" id="id" required>
-                 <br>
-                 <input type="text" class="form form-control" placeholder="Shoe Brand" id="brand" required>
-                 <br>
-                 <input type="text" class="form form-control" placeholder="Color" id="color" required>
-                 <br>
-                 <input type="text" class="form-control" placeholder="Enter Image URL" id="image">
-                 <br>
-                 <div class="row">
-                   <div class="">
-                     <div class="col-md-4">
-                       <label class="text-muted" for="price">Price</label>
-                       <input type="number" class="form-control" min="0.00" placeholder="Shoe Price" id="price" required>
-                     </div>
-                     <div class="col-md-4">
-                       <label class="text-muted" for="qty">Quantity</label>
-                       <input type="number" class="form-control" placeholder="Quantity" id="qty" required>
-                     </div>
-                     <div class="col-md-4">
-                       <label class="text-muted" for="size">Select Size</label>
-                       <select class="select form-control" id="size" required>
-                         <option >1</option>
+      <!-- Modal content-->
+      <div class="newStock modal-content" id="needs-validation" novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Stock</h4>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="textl" class="form form-control" placeholder="Item ID" id="id" required>
+              <br>
+              <input type="text" class="form form-control" placeholder="Shoe Brand" id="brand" required>
+              <br>
+              <input type="text" class="form form-control" placeholder="Color" id="color" required>
+              <br>
+              <input type="text" class="form-control" placeholder="Enter Image URL" id="image" required>
+              <br>
+              <div class="row">
+                <div class="">
+                  <div class="col-md-4">
+                    <label class="text-muted" for="price">Price</label>
+                    <input type="number" class="form-control" min="0.00" placeholder="Shoe Price" id="price" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-muted" for="qty">Quantity</label>
+                    <input type="number" class="form-control" placeholder="Quantity" id="qty" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-muted" for="size">Select Size</label>
+                    <select class="select form-control" id="size" required>
+                         <option>1</option>
                          <option >2</option>
                          <option >3</option>
                          <option >4</option>
@@ -177,40 +180,40 @@
                          <option >11</option>
                          <option >12</option>
                        </select>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <div class="modal-footer">
-               <button type="submit" class="btn btn-default" id="submitStock">Submit</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-           </form>
-         </div>
-       </div>
-     </div>
-
-     <!-- update Modal -->
-        <div class="modal fade" id="updateModal" role="dialog">
-          <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-              </div>
-              <div class="modal-body">
-                <p>Some text in the modal.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" id="submitStock">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- update Modal -->
+  <div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <!-- JQUERY JavaScript -->
   <script src="./vendor/jquery/jquery.min.js"></script>
 

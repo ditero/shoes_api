@@ -19,3 +19,7 @@
 .form{
   display:block !important;
 }
+
+#buyBtn{
+  margin-bottom: 5%;
+}
