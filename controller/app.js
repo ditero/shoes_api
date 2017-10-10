@@ -132,14 +132,20 @@ module.exports = function(models) {
   //Add stock to the DB
   const addNewStock = async(req, res, next) => {
     let stock = req.body
-    let addedItem = await addNewItem(stock)
-    console.log(addedItem);
-    try {
+    if (stock.id !== undefined) {
+      let addedItem = await addNewItem(stock)
+      console.log(addedItem);
+      try {
+        res.json({
+          response: "Added Successfully.."
+        })
+      } catch (e) {
+        return next(e)
+      }
+    }else {
       res.json({
-        data: addedItem
+        response: "Please add All the required fields"
       })
-    } catch (e) {
-      return next(e)
     }
   }
 
