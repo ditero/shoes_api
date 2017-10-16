@@ -6,7 +6,7 @@ module.exports = function(models) {
   const getShoes = async() => {
     return models.Catalogue.find({}, {
       '_id': 0
-    })
+    }).sort({brand: 1, size: 1})
   }
 
   //Find the given Size on the DB
